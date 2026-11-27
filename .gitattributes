@@ -1,0 +1,11 @@
+* text=auto
+*.ps1 text eol=crlf
+*.png binary
+*.bmp binary
+*.wav binary
+*.xm binary
+*.mod binary
+*.s3m binary
+*.it binary
+*.zip binary
+Makefile text eol=lf

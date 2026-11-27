@@ -1,0 +1,13 @@
+# build output
+build/
+build-linux/
+/kollapse
+/kollapsew
+*.exe
+*.o
+*.a
+
+# frames written by --dump / tests
+*.bmp
+*.six
+screenshot.png
