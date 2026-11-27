@@ -1564,11 +1564,11 @@ static int edit_key(int k)                                 /* 1 = handled */
         if (s < 0) return 0;
         int note = octave * 12 + s + 1;
         if (note > 120) return 1;
-        int ch = ech, row = erow;
-        if (state == 1) {                                  /* live: notes pressed together form a chord, one per channel */
+        int ch = ech, row = erow, chord = 0, keep = erow;
+        {                                                  /* notes pressed together form a chord, one per channel */
             static DWORD chord_t; static int chord_pat = -1, chord_row, chord_ch;
             DWORD now = GetTickCount();
-            if (now - chord_t < 90 && chord_pat == epat) { row = chord_row; ch = chord_ch + 1 < nch ? chord_ch + 1 : chord_ch; }
+            if (now - chord_t < 90 && chord_pat == epat) { row = chord_row; ch = chord_ch + 1 < nch ? chord_ch + 1 : chord_ch; chord = 1; }
             chord_t = now; chord_pat = epat; chord_row = row; chord_ch = ch;
             if (!(e = ev_at(epat, row, ch))) return 1;
         }
@@ -1578,6 +1578,7 @@ static int edit_key(int k)                                 /* 1 = handled */
         e->note = note;
         if (mi.mod->ins) e->ins = cur_ins + 1;
         edit_end();
+        if (chord) erow = keep;                            /* the first note already stepped the cursor */
         preview(cur_ins, note);
         return 1;
     }

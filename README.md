@@ -57,8 +57,8 @@ or API key is required.
 
 ![The pattern editor](.github/assets/editor.png)
 
-`F2` opens the pattern editor. Notes are entered with the FT2 piano layout. During playback, entered
-notes go to the row being played, and notes struck together are placed in adjacent channels. `Ctrl+R`
+`F2` opens the pattern editor. Notes are entered with the FT2 piano layout, and notes struck together
+are placed in adjacent channels. During playback, entered notes go to the row being played. `Ctrl+R`
 switches to jam mode, in which keys play notes without recording them.
 
 The editor also provides:
